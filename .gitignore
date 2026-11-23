@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# MySQL exports and local backups
+*.sql.bak
+*.dump
+*.log
+
+# Power BI temporary files
+*.pbix.autorecover
+*.pbit.autorecover
+*.tmp
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
