@@ -1,6 +1,8 @@
 # Food Chain Demand Intelligence | MySQL & Power BI
 
-I built this project to understand what drives sales in a pizza business: which products customers order, when demand is highest, and how different pizza types, sizes and categories contribute to revenue.
+I built this project to understand demand in a food-service business: which products customers order, when demand is highest, and how product types, sizes and categories contribute to revenue.
+
+> **Case-study scope:** The available dataset represents one pizza restaurant. “Food Chain Demand Intelligence” is the portfolio project title; the analysis does not claim to cover multiple outlets or an entire restaurant chain.
 
 I used MySQL for the relational data analysis and Power BI to present the results in a two-page interactive dashboard. The work is organised around business questions rather than a list of SQL functions, so a reviewer can follow the problem, analysis, findings and possible business actions.
 
