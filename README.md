@@ -104,9 +104,38 @@ Start with [01_total_orders.sql](01_total_orders.sql). The [SQL Query Guide](doc
 
 These are follow-up recommendations, not claims that the dataset proves a particular cause or financial outcome.
 
-## Repository contents
+## Repository structure
 
-The repository includes 13 numbered SQL files, four CSV source tables, a Power BI dashboard, dashboard screenshots, a data preview image and a Word project report. Additional schema, validation and documentation files are organised under sql, scripts and docs.
+```text
+Pizza-SQL-Data-Analytics/
+├── README.md
+├── 01_total_orders.sql
+├── 02_total_revenue.sql
+├── ... (13 numbered SQL analysis files)
+├── orders.csv
+├── order_details.csv
+├── pizzas.csv
+├── pizza_types.csv
+├── A1pizzashop_analytics_dashboard.pbix
+├── Pizza_Sales_Project_Report.docx
+├── Screenshot 2026-11-15 003335.png
+├── Screenshot 2026-11-15 003442.png
+├── Screenshot 2026-11-15 013117.png
+├── sql/
+│   ├── 00_create_tables.sql
+│   └── 14_data_quality_checks.sql
+├── scripts/
+│   └── validate_data.py
+├── docs/
+│   ├── BUSINESS_PROBLEM.md
+│   ├── DATA_DICTIONARY.md
+│   ├── METHODOLOGY.md
+│   ├── KEY_FINDINGS.md
+│   ├── SQL_QUERY_GUIDE.md
+│   ├── RECOMMENDATIONS_AND_LIMITATIONS.md
+│   └── REPRODUCING_ANALYSIS.md
+└── .gitignore
+```
 
 ## How to reproduce the project
 
