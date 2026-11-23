@@ -1,189 +1,147 @@
-# Pizza-SQL-Data-Analytics
+# Pizza Sales Analysis | MySQL & Power BI
 
-## Project Overview
+I built this project to understand what drives sales in a pizza business: which products customers order, when demand is highest, and how different pizza types, sizes and categories contribute to revenue.
 
-This project focuses on analysing pizza shop sales data using MySQL and Microsoft Power BI.
+I used MySQL for the relational data analysis and Power BI to present the results in a two-page interactive dashboard. The work is organised around business questions rather than a list of SQL functions, so a reviewer can follow the problem, analysis, findings and possible business actions.
 
-I worked with a dataset containing order details, pizza information, product categories, sizes and prices. The aim was to understand the overall sales performance, identify popular products, analyse revenue contribution and explore customer ordering patterns.
+[Open the Power BI dashboard](./A1pizzashop_analytics_dashboard.pbix) · [Read the project report](./Pizza_Sales_Project_Report.docx)
 
-I first used MySQL to organise the data and perform SQL analysis. I then used Power BI to create an interactive dashboard that presents the results through KPIs, charts and filters.
+## Project snapshot
 
-## Project Objectives
-
-- Analyse overall sales and revenue performance.
-- Identify the most frequently ordered pizza types and sizes.
-- Compare sales across different pizza categories.
-- Analyse hourly and monthly ordering patterns.
-- Identify top-performing products based on quantity and revenue.
-- Present the findings through an interactive Power BI dashboard.
-
-## Tools and Technologies
-
-| Tool | Purpose |
+| Item | Detail |
 |---|---|
-| MySQL 8 | Database management and SQL analysis |
-| MySQL Workbench | Writing and executing SQL queries |
-| Power BI | Dashboard development and data visualisation |
-| Microsoft Excel | Supporting data review and result organisation |
+| Project type | Sales and business performance analysis |
+| Tools | MySQL 8, MySQL Workbench, Power BI |
+| Period | 1 January–31 December 2015 |
+| Orders | 21,350 unique orders, verified from orders.csv |
+| Product catalogue | 32 pizza types and 96 size/product combinations |
+| Deliverables | 13 SQL analyses, Power BI dashboard, project report |
 
-## Dataset Description
+The current dashboard displays approximately **$817.86K revenue**, **50K pizzas sold**, **21K orders** and an **average order value of $38.31**. The 50K and 21K values are rounded dashboard displays. Exact totals should be checked by running the SQL and validation script included in this repository.
 
-The project uses four CSV files:
-<img width="355" height="320" alt="Screenshot 2026-11-15 013117" src="https://github.com/user-attachments/assets/d7e45554-ed42-4dd9-ba2b-fbcca695281c" />
+## The business problem
 
-| File | Description |
-|---|---|
-| orders.csv | Order dates and times |
-| order_details.csv | Order line details and quantities |
-| pizzas.csv | Pizza sizes and prices |
-| pizza_types.csv | Pizza names, categories and ingredients |
+A restaurant may know its total sales, but that number alone does not explain what is driving performance. The team also needs to understand which products customers choose, which sizes and categories contribute most, and when demand is highest.
 
-The four tables are connected using their respective ID columns to allow combined analysis.
+I approached the data as if I were supporting a pizza shop's sales manager. I wanted to move beyond reporting totals and answer questions that could support product planning, promotions, staffing and inventory decisions.
 
-## SQL Analysis
+### Questions I wanted to answer
 
-I divided the SQL work into three sections.
+1. How many orders did the shop receive, and how much revenue did it generate?
+2. Which pizza types and sizes are ordered most often?
+3. Which products generate the highest revenue?
+4. How does demand differ across pizza categories?
+5. At what times of day does the shop receive the most orders?
+6. How do daily sales patterns change over the year?
+7. What percentage of revenue comes from each pizza type?
+8. Which pizzas perform best within each category?
 
-### Basic Analysis
+## Dashboard preview
 
-1. Total number of orders.
-2. Total revenue generated.
-3. Highest-priced pizza.
-4. Most commonly ordered pizza size.
-5. Top five pizza types by quantity sold.
+### Page 1 — Executive Sales Overview
 
-### Intermediate Analysis
+<img width="578" alt="Executive sales overview dashboard" src="https://github.com/user-attachments/assets/9b3945ec-17a4-4bd8-ae09-4ab6021412b2" />
 
-6. Total quantity sold by category.
-7. Orders placed by hour.
-8. Number of pizza types in each category.
-9. Average daily pizza quantity sold.
+This page gives a quick view of revenue, pizzas sold, orders, average order value and average pizzas per order. It also lets the viewer explore demand by size, category, hour and date.
 
-### Advanced Analysis
+### Page 2 — Product and Sales Performance
 
-10. Top three pizza types by revenue.
-11. Revenue contribution percentage of each pizza type.
-12. Cumulative revenue over time.
-13. Top three revenue-generating pizzas within each category.
+<img width="574" alt="Product and sales performance dashboard" src="https://github.com/user-attachments/assets/c11e4eda-e551-40e2-b1ec-0dfd96945128" />
 
-The SQL techniques used include:
+This page focuses on individual pizza types and compares products by revenue and quantity. This makes it easier to distinguish popular products from products that generate higher sales value.
 
-- SELECT and WHERE
-- ORDER BY and LIMIT
-- Aggregate functions
-- GROUP BY and HAVING
-- INNER JOIN and LEFT JOIN
-- CASE WHEN
-- Subqueries
-- Common Table Expressions (CTEs)
-- Window functions
-- Date and time functions
+## Key findings
 
-## Power BI Dashboard
+The points below separate checks made directly on accessible CSV files from results shown in the existing dashboard.
 
-I created a two-page dashboard to present the sales analysis.
+### 1. The shop processed 21,350 orders during 2015
 
-### Page 1 – Executive Sales Overview
-<img width="578" height="328" alt="Screenshot 2026-11-15 003442" src="https://github.com/user-attachments/assets/9b3945ec-17a4-4bd8-ae09-4ab6021412b2" />
+I checked orders.csv directly. It contains 21,350 rows and 21,350 distinct order IDs, covering 1 January to 31 December 2015.
 
-The first page provides an overview of the pizza shop's sales performance.
+### 2. Noon is the busiest order hour
 
-It includes:
+I grouped the order timestamps by hour. 12:00 noon was the busiest hour, with 2,520 orders. 13:00 followed with 2,455 orders, and 18:00 recorded 2,399 orders.
 
-- Total Revenue
-- Total Pizzas Sold
-- Total Orders
-- Average Order Value
-- Average Pizzas Per Order
-- Revenue Per Pizza
-- Quantity by Size
-- Orders by Hour
-- Monthly Orders and Revenue
-- Quantity by Category
-- Daily Revenue Trend
+This is useful for planning staff coverage and preparation capacity. It does not, by itself, tell us how many pizzas were prepared at each hour, because an order can contain multiple pizzas.
 
-It also includes date, size and category filters.
+### 3. The leading product depends on the measure
 
-### Page 2 – Product and Sales Performance
-<img width="574" height="323" alt="Screenshot 2026-11-15 003335" src="https://github.com/user-attachments/assets/c11e4eda-e551-40e2-b1ec-0dfd96945128" />
+The dashboard identifies The Classic Deluxe Pizza as the best-selling pizza by quantity and The Thai Chicken Pizza as the highest-revenue pizza. A product can be ordered frequently without generating the highest sales value.
 
-The second page focuses on product-level performance.
+### 4. Size and category mix matter
 
-It includes:
+The existing dashboard reports that Large pizzas contribute 45.89% of revenue and that the Classic category accounts for 30.03% of pizza quantity sold. These comparisons help describe the product mix and should be reviewed alongside both revenue and quantity.
 
-- Total Revenue
-- Total Pizzas Sold
-- Best-Selling Pizza
-- Highest-Revenue Pizza
-- Revenue by Category
-- Top Pizzas by Revenue
-- Lower-Revenue Pizza Types
-- Total Pizzas Sold by Name
-- Revenue by Pizza Size
+## How I approached the analysis
 
-## Key Findings
+I started by understanding the four CSV files rather than immediately writing queries. The order table records when each order was placed. The order-details table records the pizzas and quantities included in each order. The pizzas table provides size and price information, while the pizza-types table contains product names, categories and ingredients.
 
-The Power BI dashboard displays the following results:
+After mapping the relationships, I used SQL joins to bring the relevant information together. I began with basic KPIs such as order count and revenue, then moved to product and category comparisons. I examined hourly demand and average daily quantity, and used CTEs and window functions for revenue contribution, cumulative revenue and ranking products within each category.
 
-| Metric | Result |
-|---|---:|
-| Total Revenue | $817.86K |
-| Total Pizzas Sold | 50K |
-| Total Orders | 21K |
-| Average Order Value | $38.31 |
-| Average Pizzas Per Order | 2.32 |
-| Best-Selling Pizza | The Classic Deluxe Pizza |
-| Highest-Revenue Pizza | The Thai Chicken Pizza |
+I then used Power BI to present the results in two views: an executive overview and a product-performance page.
 
-Additional findings:
+See [Methodology](docs/METHODOLOGY.md) for the full workflow and [Data Dictionary](docs/DATA_DICTIONARY.md) for the table definitions and relationships.
 
-- Classic contributes the highest share of pizza quantity sold at 30.03%.
-- Large pizzas contribute the highest displayed revenue share at 45.89%.
-- The dashboard allows sales performance to be explored by date, size and category.
+## SQL analysis
 
-*Note: The 50K pizzas sold and 21K orders are rounded dashboard displays. Figures should be reconciled against the SQL results before being treated as exact values.*
+The 13 original SQL files are numbered 01 to 13 in the repository root. They progress from basic aggregation to advanced analysis.
 
-## Business Recommendations
+| Level | Analysis | SQL concepts |
+|---|---|---|
+| Basic | Order count, revenue, highest-priced product, popular size, top five pizzas by quantity | Aggregation, joins, GROUP BY, ORDER BY, LIMIT |
+| Intermediate | Quantity by category, orders by hour, product count by category, average daily quantity | Date/time functions, subqueries |
+| Advanced | Top pizzas by revenue, revenue contribution, cumulative revenue, top three within category | CTEs, window functions, DENSE_RANK |
 
-Based on the dashboard findings:
+Start with [01_total_orders.sql](01_total_orders.sql). The [SQL Query Guide](docs/SQL_QUERY_GUIDE.md) explains each query and the business question it answers.
 
-1. Maintain the availability of popular products.
-2. Study the factors contributing to high revenue from top-performing pizzas.
-3. Plan inventory according to category-wise demand.
-4. Review the sales and revenue contribution of different pizza sizes.
-5. Use hourly order patterns to support staff and preparation planning.
-6. Review lower-performing products for possible improvement.
+## Business recommendations
 
-## Project Structure
+1. **Plan service coverage around busy periods.** The order timestamps show strong lunchtime and evening demand. Compare this with staffing rosters, preparation times and queue lengths before changing shifts.
+2. **Protect availability of popular products.** The Classic Deluxe leads by quantity in the dashboard. Monitor its ingredient availability and stock levels.
+3. **Review quantity and revenue together.** The Thai Chicken leads the dashboard's revenue comparison, while the Classic Deluxe leads by quantity.
+4. **Use category and size mix for inventory planning.** These breakdowns can help the team understand the product mix and prepare ingredients accordingly.
+5. **Investigate weaker products before changing the menu.** Low revenue alone is not enough reason to discontinue a product. Review margin, ingredient cost, preparation time and customer feedback as well.
 
-```text
-A1_Pizza_Shop_SQL_Data_Analysis/
-│
-├── 01_Basic_Analysis/
-│
-├── 02_Intermediate_Analysis/
-│
-├── 03_Advanced_Analysis/
-│
-├── 04_PowerBI/
-│
-├── 05_Results_and_Findings/
-│
-├── data/
-│
-└── README.md
-```
+These are follow-up recommendations, not claims that the dataset proves a particular cause or financial outcome.
 
-## Conclusion
+## Repository contents
 
-This project gave me practical experience in working with relational databases, writing SQL queries and creating interactive dashboards.
+The repository includes 13 numbered SQL files, four CSV source tables, a Power BI dashboard, dashboard screenshots, a data preview image and a Word project report. Additional schema, validation and documentation files are organised under sql, scripts and docs.
 
-By combining MySQL and Power BI, I was able to explore sales performance from different perspectives and present the findings in a way that is easier to understand.
+## How to reproduce the project
 
-It also helped me strengthen my understanding of SQL analysis, data visualisation and business-oriented problem solving.
+1. Clone or download this repository.
+2. Create the database and tables using [sql/00_create_tables.sql](sql/00_create_tables.sql).
+3. Import the four CSV files into their matching tables. Import parent tables before dependent tables if foreign-key constraints are enabled.
+4. Run the numbered SQL files in order in MySQL Workbench.
+5. Run [scripts/validate_data.py](scripts/validate_data.py) from the repository root to check the CSV files and recalculate core totals.
+6. Open the PBIX file in Power BI Desktop. If prompted, update the CSV source paths and refresh the model.
+7. Compare dashboard headline cards with the SQL and Python validation results.
+
+See [Reproducing the Analysis](docs/REPRODUCING_ANALYSIS.md) for detailed setup steps.
+
+## Skills demonstrated
+
+- Relational data analysis and SQL joins
+- Aggregations, subqueries and CTEs
+- Window functions and ranking
+- Date/time analysis
+- KPI definition and business interpretation
+- Power BI dashboard design and data visualisation
+- Translating findings into operational questions and recommendations
+
+## Limitations and next steps
+
+The data covers orders, products, sizes, prices, categories and ingredients. It does not include ingredient costs, labour costs, delivery costs, discounts, refunds, customer demographics or customer satisfaction. This project therefore analyses sales and demand, not profit or customer lifetime value.
+
+If I were extending the analysis, I would add product costs and discounts to calculate gross margin, include customer identifiers to study repeat purchasing, and combine order patterns with inventory and staffing data.
+
+## About this project
+
+I built this project to practise taking a business question through the full analysis process: understanding the data, querying related tables, checking patterns, building a dashboard and explaining what the results could mean to a business team.
 
 ---
 
-**Project Category:** Data Analytics  
-**Tools:** MySQL | Power BI | Excel  
-**Focus Areas:** SQL, Data Analysis, Dashboard Development and Business Insights
+**Project area:** Data Analytics | **Tools:** MySQL, Power BI | **Focus:** Sales performance, product analysis and business insights
+
+*Dataset attribution: the original source and redistribution terms for the four CSV files have not yet been confirmed. Add the original dataset creator/source and applicable licence before redistributing the data.*
