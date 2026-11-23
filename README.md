@@ -1,4 +1,4 @@
-# Pizza Sales Analysis | MySQL & Power BI
+# Food Chain Demand Intelligence | MySQL & Power BI
 
 I built this project to understand what drives sales in a pizza business: which products customers order, when demand is highest, and how different pizza types, sizes and categories contribute to revenue.
 
@@ -107,7 +107,7 @@ These are follow-up recommendations, not claims that the dataset proves a partic
 ## Repository structure
 
 ```text
-Pizza-SQL-Data-Analytics/
+food-chain-demand-intelligence/
 ├── README.md
 ├── 01_total_orders.sql
 ├── 02_total_revenue.sql
