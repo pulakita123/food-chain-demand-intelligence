@@ -6,7 +6,7 @@ I built this project to understand demand in a food-service business: which prod
 
 I used MySQL for the relational data analysis and Power BI to present the results in a two-page interactive dashboard. The work is organised around business questions rather than a list of SQL functions, so a reviewer can follow the problem, analysis, findings and possible business actions.
 
-[Open the Power BI dashboard](./A1pizzashop_analytics_dashboard.pbix) · [Read the project report](./Pizza_Sales_Project_Report.docx)
+[Open the Power BI dashboard](./A1pizzashop_analytics_dashboard.pbix) · [Read the project report](docs/PROJECT_REPORT.md) · [Open the original report file](./Pizza_Sales_Project_Report.docx)
 
 ## Project snapshot
 
